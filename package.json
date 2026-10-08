@@ -1,0 +1,73 @@
+{
+  "name": "cidc-v2-bddtests",
+  "version": "1.0.0",
+  "description": "This is CIDC-IODH set of tests",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test:int": "cross-env ENV=dev-cloudtwo BROWSER=chrome cucumber-js",
+    "test:uat": "cross-env ENV=staging BROWSER=chrome cucumber-js test",
+    "test:local": "cross-env ENV=dev-cloudtwo BROWSER=chrome cucumber-js -b --tags",
+    "test:localStage": "cross-env ENV=staging BROWSER=chrome cucumber-js -b --tags",
+    "test:localHeadless": "cross-env ENV=dev-cloudtwo BROWSER=chrome HEADLESS=true cucumber-js -b --tags",
+    "test:api_int": "cross-env ENV=dev-cloudtwo BROWSER=chrome HEADLESS=true cucumber-js --tags @api",
+    "test:api_stage": "cross-env ENV=staging BROWSER=chrome HEADLESS=true cucumber-js --tags @api_stage",
+    "test:ui_int": "cross-env ENV=dev-cloudtwo BROWSER=chrome cucumber-js --tags @ui_dev",
+    "test:ui_stage": "cross-env ENV=staging BROWSER=chrome cucumber-js --tags @ui_stage",
+    "test:headless_int": "cross-env ENV=dev-cloudtwo BROWSER=chrome HEADLESS=true cucumber-js --tags @ui_dev",
+    "test:rerun_int": "cross-env ENV=dev-cloudtwo BROWSER=chrome cucumber-js -p rerun @rerun.txt",
+    "test:rerun_headless_int": "cross-env ENV=dev-cloudtwo BROWSER=chrome HEADLESS=true cucumber-js -p rerun @rerun.txt",
+    "test:headless_stage": "cross-env ENV=staging BROWSER=chrome HEADLESS=true cucumber-js --tags @ui_stage",
+    "test:rerun_headless_stage": "cross-env ENV=staging BROWSER=chrome HEADLESS=true cucumber-js -p rerun @rerun.txt",
+    "test:firefox_headless_int": "cross-env ENV=dev-cloudtwo BROWSER=firefox HEADLESS=true cucumber-js --tags @ui_dev",
+    "test:safari_headless_int": "cross-env ENV=dev-cloudtwo BROWSER=webkit HEADLESS=true cucumber-js --tags @ui_dev",
+    "test:run_test": "cucumber-js",
+    "help": "cucumber-js -h"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@cucumber/cucumber": "^13.2.1",
+    "@google-cloud/cloud-sql-connector": "^1.12.0",
+    "@google-cloud/pubsub": "^6.0.1",
+    "@playwright/test": "^1.63.0",
+    "@types/adm-zip": "^0.5.8",
+    "@types/node": "^26.4.1",
+    "@types/node-fetch": "^2.6.13",
+    "@types/pg": "^8.23.1",
+    "adm-zip": "^0.6.0",
+    "axios": "^1.20.0",
+    "cross-env": "^10.1.0",
+    "csv-parse": "^7.0.2",
+    "dotenv": "^17.4.2",
+    "form-data": "^4.0.6",
+    "jwt-decode": "^4.0.0",
+    "log4js": "^6.9.1",
+    "node-fetch": "^3.3.2",
+    "pdf-parse": "^2.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "overrides": {
+    "minimatch": "^10.2.4",
+    "@tootallnate/once": "^3.0.1",
+    "@google-cloud/pubsub": {
+      "@opentelemetry/core": "^2.10.0"
+    },
+    "@google-cloud/storage": {
+      "gaxios": "^7.3.0",
+      "retry-request": "^8.0.4",
+      "teeny-request": "^10.1.4"
+    }
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^8.0.1",
+    "pg": "^8.23.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.2": true,
+    "protobufjs@7.6.6": true
+  }
+}
